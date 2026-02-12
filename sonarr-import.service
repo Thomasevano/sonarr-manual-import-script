@@ -1,0 +1,22 @@
+[Unit]
+Description=Import TV show episodes to Sonarr
+Documentation=https://github.com/thomasevano/sonarr-manual-import
+# Don't start on boot, only triggered by path unit
+RefuseManualStart=false
+
+[Service]
+Type=oneshot
+# Path is set at install time
+ExecStart=/opt/sonarr-manual-import/batchimport.sh -c /opt/sonarr-manual-import/settings.json
+# Run as specific user (configurable)
+User=root
+Group=root
+# Wait a bit for files to finish copying before processing
+ExecStartPre=/bin/sleep 5
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=sonarr-import
+
+[Install]
+WantedBy=multi-user.target
