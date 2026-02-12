@@ -6,9 +6,7 @@ Documentation=https://github.com/thomasevano/sonarr-manual-import
 # Path is read from settings.json at install time
 # This will be replaced by the install script
 PathChanged=/path/to/downloads
-# Debounce: wait for file writes to settle (10 seconds)
-TriggerLimitIntervalSec=10
-TriggerLimitBurst=1
+Unit=sonarr-import.service
 
 [Install]
 WantedBy=multi-user.target

@@ -71,9 +71,7 @@ Documentation=https://github.com/thomasevano/sonarr-manual-import
 
 [Path]
 PathChanged=$DOWNLOADS_FOLDER
-# Debounce: wait for file writes to settle
-TriggerLimitIntervalSec=10
-TriggerLimitBurst=1
+Unit=sonarr-import.service
 
 [Install]
 WantedBy=multi-user.target
@@ -87,9 +85,9 @@ Documentation=https://github.com/thomasevano/sonarr-manual-import
 
 [Service]
 Type=oneshot
+# Wait for files to finish copying before processing
+ExecStartPre=/bin/sleep 10
 ExecStart=$INSTALL_DIR/batchimport.sh -c $INSTALL_DIR/settings.json
-# Wait for files to finish copying
-ExecStartPre=/bin/sleep 5
 StandardOutput=journal
 StandardError=journal
 SyslogIdentifier=sonarr-import

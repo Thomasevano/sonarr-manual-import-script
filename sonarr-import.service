@@ -6,13 +6,10 @@ RefuseManualStart=false
 
 [Service]
 Type=oneshot
+# Wait for files to finish copying before processing
+ExecStartPre=/bin/sleep 10
 # Path is set at install time
 ExecStart=/opt/sonarr-manual-import/batchimport.sh -c /opt/sonarr-manual-import/settings.json
-# Run as specific user (configurable)
-User=root
-Group=root
-# Wait a bit for files to finish copying before processing
-ExecStartPre=/bin/sleep 5
 # Logging
 StandardOutput=journal
 StandardError=journal
