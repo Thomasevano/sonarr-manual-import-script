@@ -1,10 +1,14 @@
 {
   "sonarr": {
-    "url" : "http://localhost:8989",
-    "apiKey" : "your-api-key",
-    "downloadsFolder" : "/path/to/downloads",
-    "mappingPath" : "/path/to/downloads",
-    "importMode" : "Move",
-    "timeoutSecs" : "5"
+    "url": "http://localhost:8989",
+    "apiKey": "your-api-key",
+    "downloadsFolder": "/path/to/downloads",
+    "mappingPath": "/path/to/downloads",
+    "importMode": "Move",
+    "timeoutSecs": "5",
+    "autoMatch": true,
+    "autoMatchMinScore": 70,
+    "transforms": [],
+    "seriesMappings": []
   }
 }
